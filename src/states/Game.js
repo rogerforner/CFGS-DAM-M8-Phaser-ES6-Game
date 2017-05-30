@@ -277,7 +277,7 @@ export default class extends Phaser.State {
 
     this.splashParticles.x = this.player.x + 10;
     this.splashParticles.y = this.player.y + 30;
-    this.splashParticles.start(true, 150, null, 80);
+    this.splashParticles.start(true, 80, null, 80);
     this.splash.play();
 
     //this.playerDeath();
@@ -288,7 +288,7 @@ export default class extends Phaser.State {
 
     this.blodParticles.x = this.player.x + 10;
     this.blodParticles.y = this.player.y + 30;
-    this.blodParticles.start(true, 300, null, 300);
+    this.blodParticles.start(true, 80, null, 80);
   }
 
   loadEnemies () {
@@ -297,26 +297,26 @@ export default class extends Phaser.State {
 
     this.enemy1 = this.enemies.create(290, 80, 'enemy_1');
     this.enemy1.body.gravity.y = 300;
-    this.enemy1.body.velocity.x = 100;
+    this.enemy1.body.velocity.x = 60;
 
     this.enemy2 = this.enemies.create(1200, 80, 'enemy_1');
     this.enemy2.body.gravity.y = 300;
-    this.enemy2.body.velocity.x = 90;
+    this.enemy2.body.velocity.x = 60;
 
     this.enemy3 = this.enemies.create(1500, 80, 'enemy_1');
     this.enemy3.body.gravity.y = 300;
-    this.enemy3.body.velocity.x = 90;
+    this.enemy3.body.velocity.x = 60;
   }
 
   updateEnemyMovement (){
-    if (parseInt(this.enemy1.body.x) > 520 ) { this.enemy1.body.velocity.x = -100; }
+    if (parseInt(this.enemy1.body.x) > 520 ) { this.enemy1.body.velocity.x = -200; }
     if (parseInt(this.enemy1.body.x) < 260 ) { this.enemy1.body.velocity.x = 230; }
 
     if (parseInt(this.enemy2.body.x) > 1200 ) { this.enemy2.body.velocity.x = -90; }
     if (parseInt(this.enemy2.body.x) < 1100 ) { this.enemy2.body.velocity.x = 90; }
 
     if (parseInt(this.enemy3.body.x) > 1600 ) { this.enemy3.body.velocity.x = -200; }
-    if (parseInt(this.enemy3.body.x) < 1300 ) { this.enemy3.body.velocity.x = 300; }
+    if (parseInt(this.enemy3.body.x) < 1300 ) { this.enemy3.body.velocity.x = 230; }
   }
 
   initScoreCounter () {
@@ -350,20 +350,21 @@ export default class extends Phaser.State {
     {
       this.levelMusic.stop();
       this.powerMusic.stop();
-      this.game.state.start('levelPassed');
+      this.game.state.start('Game');
     }
   }
 
-  shakeEffect (g, time) {
+  shakeEffect (g) {
     var move = 5;
+    var time = 20;
 
-    this.game.add.tween(g)
+    this.add.tween(g)
       .to({y:"-"+move}, time).to({y:"+"+move*2}, time*2).to({y:"-"+move}, time)
       .to({y:"-"+move}, time).to({y:"+"+move*2}, time*2).to({y:"-"+move}, time)
       .to({y:"-"+move/2}, time).to({y:"+"+move}, time*2).to({y:"-"+move/2}, time)
       .start();
 
-    this.game.add.tween(g)
+    this.add.tween(g)
       .to({x:"-"+move}, time).to({x:"+"+move*2}, time*2).to({x:"-"+move}, time)
       .to({x:"-"+move}, time).to({x:"+"+move*2}, time*2).to({x:"-"+move}, time)
       .to({x:"-"+move/2}, time).to({x:"+"+move}, time*2).to({x:"-"+move/2}, time)
