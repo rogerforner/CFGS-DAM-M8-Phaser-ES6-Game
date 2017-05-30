@@ -33,13 +33,13 @@ export default class extends Phaser.State {
     /**
      * Audio
      */
-    this.load.audio('level_music', ['assets/audio/level_2_music.wav']);
+    this.load.audio('level_music', ['assets/audio/level_1_music.wav']);
     this.load.audio('power_music', ['assets/audio/power_music.wav']);
     this.load.audio('jump', ['assets/audio/jump.wav']);
     this.load.audio('coin', ['assets/audio/coin.wav']);
     this.load.audio('game_over', ['assets/audio/game_over_a.wav']);
     this.load.audio('splash', ['assets/audio/splash.wav']);
-    this.load.audio('hurt', ['assets/audio/hurt.wav']);
+    this.load.audio('hurt', ['assets/audio/wrong.wav']);
     this.load.audio('shout', ['assets/audio/shout.wav']);
   }
 
