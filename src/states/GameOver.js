@@ -37,7 +37,7 @@ export default class extends Phaser.State {
     this.menuButton.inputEnabled = true;
     
     this.menuButton.events.onInputUp.add(function () {
-      game.state.start('Game2')
+      game.state.start('Menu')
     });
   }
   
