@@ -1,10 +1,19 @@
 /* globals __DEV__ */
 import Phaser from 'phaser'
+import { centerGameObjects } from '../utils'
 
 export default class extends Phaser.State {
   init () {}
 
   preload () {
+    //Loading
+    this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
+    this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
+    centerGameObjects([this.loaderBg, this.loaderBar]);
+
+    this.load.setPreloadSprite(this.loaderBar);
+
+    //Game
     this.game.load.tilemap('level2', '/assets/levels/level2.json', null, Phaser.Tilemap.TILED_JSON);
     this.game.load.image('splash_particle', 'assets/images/splash_particle2.jpg');
     this.game.load.audio('splash', ['assets/audio/splash2.wav']);
@@ -215,7 +224,9 @@ export default class extends Phaser.State {
   playerDeath () {
     this.blockInputs = true;
     
-    this.state.start('GameOver');
+    setTimeout(function () {
+      this.game.state.start('GameOver');
+    }, 250);
     
     this.levelMusic.stop();
     this.powerMusic.stop();
