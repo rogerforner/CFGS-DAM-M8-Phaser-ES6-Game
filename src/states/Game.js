@@ -218,7 +218,9 @@ export default class extends Phaser.State {
   playerDeath () {
     this.blockInputs = true;
     
-    this.state.start('GameOver');
+    setTimeout(function () {
+      this.game.state.start('GameOver');
+    }, 250)
     
     this.levelMusic.stop();
     this.powerMusic.stop();
