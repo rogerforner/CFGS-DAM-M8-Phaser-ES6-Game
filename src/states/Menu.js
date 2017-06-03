@@ -4,7 +4,7 @@ import { centerGameObjects } from '../utils'
 export default class extends Phaser.State {
   init () {
     //Title
-    this.titleGame = this.game.make.text(this.game.world.centerX, 100, "Platform Game", {
+    this.titleGame = this.game.make.text((this.game.camera.x + this.game.camera.width) / 2, 100, "Platform Game", {
       font: 'bold 60pt Arial',
       fill: '#000000',
       align: 'center'
@@ -13,7 +13,7 @@ export default class extends Phaser.State {
     this.titleGame.anchor.set(0.5);
     
     //Button (Start)
-    this.startGame = this.game.make.text(this.game.world.centerX, 250, "Start (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧", {
+    this.startGame = this.game.make.text((this.game.camera.x + this.game.camera.width) / 2, 250, "Start (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧", {
       font: 'bold 32pt Arial',
       fill: '#d00303',
       align: 'center'

@@ -212,6 +212,7 @@ export default class extends Phaser.State {
 
     this.player.body.bounce.y = 0.1;
     this.player.body.gravity.y = 1500;
+    this.player.body.drag.x = 100;
 
     this.blockInputs = false;
   }
