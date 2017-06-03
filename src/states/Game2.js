@@ -6,14 +6,6 @@ export default class extends Phaser.State {
   init () {}
 
   preload () {
-    //Loading
-    this.loaderBg = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBg');
-    this.loaderBar = this.add.sprite(this.game.world.centerX, this.game.world.centerY, 'loaderBar');
-    centerGameObjects([this.loaderBg, this.loaderBar]);
-
-    this.load.setPreloadSprite(this.loaderBar);
-
-    //Game
     this.game.load.tilemap('level2', '/assets/levels/level2.json', null, Phaser.Tilemap.TILED_JSON);
     this.game.load.image('splash_particle', 'assets/images/splash_particle2.jpg');
     this.game.load.audio('splash', ['assets/audio/splash2.wav']);
